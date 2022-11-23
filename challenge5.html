@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge 5</title>
+
+    <style>
+
+        table, td, th {
+            border: 1px solid;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        input {
+            width: 80%;
+            margin: 10px 20px;
+        }
+
+        button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p>5, Create a CLI app which takes name, unit test marks, pre final marks, final marks of 5 students. And then print who has the highest marks. What if I ask you to print the average as well?</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Unit Test Marks</th>
+                <th>Pre Final Marks</th>
+                <th>Final Marks</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td><input type="text" class="student_name" placeholder="Enter Student Name"></td>
+                <td><input type="text" class="unit_test_mark" placeholder="Enter Unit Test Mark"></td>
+                <td><input type="text" class="pre_final_mark" placeholder="Enter Pre Final Mark"></td>
+                <td><input type="text" class="final_mark" placeholder="Enter Final Mark"></td>
+            </tr>
+
+            <tr>
+                <td><input type="text" class="student_name" placeholder="Enter Student Name"></td>
+                <td><input type="text" class="unit_test_mark" placeholder="Enter Unit Test Mark"></td>
+                <td><input type="text" class="pre_final_mark" placeholder="Enter Pre Final Mark"></td>
+                <td><input type="text" class="final_mark" placeholder="Enter Final Mark"></td>
+            </tr>
+            
+            <tr>
+                <td><input type="text" class="student_name" placeholder="Enter Student Name"></td>
+                <td><input type="text" class="unit_test_mark" placeholder="Enter Unit Test Mark"></td>
+                <td><input type="text" class="pre_final_mark" placeholder="Enter Pre Final Mark"></td>
+                <td><input type="text" class="final_mark" placeholder="Enter Final Mark"></td>
+            </tr>
+            
+            <tr>
+                <td><input type="text" class="student_name" placeholder="Enter Student Name"></td>
+                <td><input type="text" class="unit_test_mark" placeholder="Enter Unit Test Mark"></td>
+                <td><input type="text" class="pre_final_mark" placeholder="Enter Pre Final Mark"></td>
+                <td><input type="text" class="final_mark" placeholder="Enter Final Mark"></td>
+            </tr>
+            
+            <tr>
+                <td><input type="text" class="student_name" placeholder="Enter Student Name"></td>
+                <td><input type="text" class="unit_test_mark" placeholder="Enter Unit Test Mark"></td>
+                <td><input type="text" class="pre_final_mark" placeholder="Enter Pre Final Mark"></td>
+                <td><input type="text" class="final_mark" placeholder="Enter Final Mark"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button id="btn-submit">Submit</button>
+
+    <h3 id="display"></h3>
+
+    <script>
+        const btn = document.getElementById('btn-submit');
+        const display = document.getElementById('display');
+
+        btn.addEventListener('click', function() {
+            let student_name = document.getElementsByClassName('student_name');
+            let unit_test_mark = document.getElementsByClassName('unit_test_mark');
+            let pre_final_mark = document.getElementsByClassName('pre_final_mark');
+            let final_mark = document.getElementsByClassName('final_mark');
+
+            let student_name_array = [];
+            let unit_test_mark_array = [];
+            let pre_final_mark_array = [];
+            let final_mark_array = [];
+
+            display.innerHTML = '';
+            let max_amount = 0;
+            let msg = '';
+
+            for(let i=0; i< student_name.length; i++) {
+
+                if(student_name[i].value)
+                student_name_array.push(student_name[i].value);
+                else
+                msg += 'Student Name '+(i+1)+' is required<br>';
+
+                if(unit_test_mark[i].value)
+                unit_test_mark_array.push(Number(unit_test_mark[i].value));
+                else
+                msg += 'Unit Test Mark for Student '+(i+1)+' is required<br>';
+
+                if(pre_final_mark[i].value)
+                pre_final_mark_array.push(Number(pre_final_mark[i].value));
+                else
+                msg += 'Pre Final Mark for Student '+(i+1)+' is required<br>';
+
+                if(final_mark[i].value)
+                final_mark_array.push(Number(final_mark[i].value));
+                else
+                msg += 'Final Mark for Student '+(i+1)+' is required<br>';
+            }
+
+            if(msg == '') {
+                max_amount = final_mark_array.reduce(function(a, b) {
+                    return Math.max(a, b);
+                });
+
+                let key = final_mark_array.indexOf(max_amount);
+
+                let max_student = student_name_array[key];
+                let average = (unit_test_mark_array[key] + pre_final_mark_array[key] + final_mark_array[key] ) / 3;
+
+                display.innerHTML = max_student+' scores maximum score '+max_amount+' with average of '+average.toFixed(2);
+            } else {
+                display.innerHTML = msg;
+            }
+        });
+    </script>
+</body>
+</html>

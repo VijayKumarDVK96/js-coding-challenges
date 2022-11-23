@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge 1</title>
+
+    <style>
+        .style {
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <p>1, Create a web app which would take two inputs. It would also have 4 buttons: +, -, x /. Based on the button clicked perform the operation on the two inputs. You can do this in React or Vanilla JS based on your choice.</p>
+
+    <form action="">
+        <label for="">Input 1</label>
+        <input type="text" id="input1">
+
+        <label for="">Input 2</label>
+        <input type="text" id="input2">
+
+        <button type="button" id="add" onclick="operate('add')">+</button>
+        <button type="button" id="sub" onclick="operate('sub')">-</button>
+        <button type="button" id="multiply" onclick="operate('multiply')">*</button>
+        <button type="button" id="divide" onclick="operate('divide')">/</button>
+    </form>
+
+    <p id="display"></p>
+
+    <script>
+        let input1 = document.getElementById("input1");
+        let input2 = document.getElementById("input2");
+        let display = document.getElementById("display");
+        const add = document.getElementById("add");
+        const sub = document.getElementById("sub");
+        const multiply = document.getElementById("multiply");
+        const divide = document.getElementById("divide");
+        let msg;
+        let result;
+
+        function validate() {
+            msg = '';
+            if(input1.value == '') {
+                msg = 'Input 1 is required<br>';
+            } else if(isNaN(Number(input1.value))) {
+                msg = 'Input 1 should be a number<br>';
+            }
+
+            if(input2.value == '') {
+                msg += 'Input 2 is required<br>';
+            } else if(isNaN(Number(input2.value))) {
+                msg += 'Input 2 should be a number<br>';
+            }
+            
+            if(msg != '') {
+                display.innerHTML = msg;
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function operate(operator) {
+            if(validate()) {
+
+                switch (operator) {
+                    case 'add':
+                        result = Number(input1.value) + Number(input2.value);
+                        break;
+                    case 'sub':
+                        result = Number(input1.value) - Number(input2.value);
+                        break;
+                    case 'multiply':
+                        result = Number(input1.value) * Number(input2.value);
+                        break;
+                    case 'divide':
+                        result = Number(input1.value) / Number(input2.value);
+                        break;
+                }
+
+                display.innerHTML = 'Output : '+result;
+            }
+        }
+    </script>
+</body>
+</html>

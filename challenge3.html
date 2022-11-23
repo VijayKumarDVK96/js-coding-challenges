@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge 3</title>
+</head>
+<body>
+    <p>3, Create a web app where I can input a text. Now, create three buttons h1, h2, h3. When I click on any of the button, the text should become h1, h2, or h3.</p>
+
+    <form action="">
+        <label for="">Input</label>
+        <input type="text" id="input">
+
+        <button type="button" id="h1" onclick="changeSize('h1')">H1</button>
+        <button type="button" id="h2" onclick="changeSize('h2')">H2</button>
+        <button type="button" id="h3" onclick="changeSize('h3')">H3</button>
+    </form>
+
+    <p id="display"></p>
+
+    <script>
+        let input = document.getElementById("input");
+        let display = document.getElementById("display");
+        let size;
+
+        function validate() {
+            msg = '';
+            if(input.value == '') {
+                msg = 'Input is required<br>';
+            }
+
+            if(msg != '') {
+                size = 16;
+                display.innerHTML = msg;
+                display.style.fontSize = size+"px";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+        function changeSize(value) {
+            if(validate()) {
+                display.innerText = '';
+                
+                if(value == 'h1') {
+                    size = '<h1>'+input.value+'</h1>';
+                } else if(value == 'h2') {
+                    size = '<h2>'+input.value+'</h2>';
+                } else if(value == 'h3') {
+                    size = '<h3>'+input.value+'</h3>';
+                }
+
+                display.innerHTML = size;
+            }
+        }
+    </script>
+</body>
+</html>

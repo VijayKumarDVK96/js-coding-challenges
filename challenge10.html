@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge 10</title>
+</head>
+<body>
+    <p>10, Create two objects with name, power, and yuga as Ram, 2500, Treta. Krishna, 2325, Dwapar. Write a function which takes two objects and return the person with more power.</p>
+
+    <p id="display"></p>
+
+    <script>
+        const obj1 = {
+            'name': 'Ram',
+            'power': 2500,
+            'yuga': 'Treta'
+        };
+
+        const obj2 = {
+            'name': 'Krishna',
+            'power': 2325,
+            'yuga': 'Dwapar'
+        };
+
+        function compare(obj1, obj2) {
+            let higherPowerPerson = obj1.power > obj2.power ? obj1.name : obj2.name;
+            document.getElementById('display').innerText = higherPowerPerson+' has higher power';
+        }
+
+        compare(obj1, obj2);
+    </script>
+</body>
+</html>

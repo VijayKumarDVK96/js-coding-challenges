@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge 6</title>
+</head>
+<body>
+    <p>6, Create a web app with a button loaded. Show a text loading... on a web app. However, hide it if I click on the button loaded.</p>
+
+    <h1 id="display">Loading...</h1>
+
+    <button id="loaded">Loaded</button>
+
+    <script>
+        let display = document.getElementById('display');
+        let loaded_btn = document.getElementById('loaded');
+
+        loaded_btn.addEventListener('click', function() {
+            display.innerText = 'Loaded';
+        });
+    </script>
+</body>
+</html>
